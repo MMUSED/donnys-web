@@ -12,10 +12,10 @@ body {
 }
 
 header {
-    background-color: rgba(20, 10, 5, 0.9);
+    background-color: rgba(20, 10, 5, 0.95);
     padding: 1rem 2rem;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
 }
 
 .logo .initials {
@@ -28,8 +28,15 @@ header {
 .logo h1 {
     font-family: 'Pacifico', cursive;
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     margin-top: -5px;
+    transition: transform 0.3s ease;
+}
+
+/* Retoque: Efecto sutil en el título al pasar el mouse por el header */
+.logo h1:hover {
+    transform: scale(1.03);
+    color: #ffecd2;
 }
 
 .hero-section {
@@ -38,17 +45,17 @@ header {
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.45);
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
     padding: 2.5rem;
-    border-radius: 20px;
+    border-radius: 22px;
     max-width: 500px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
 .glass-card h2 {
@@ -70,12 +77,11 @@ header {
     justify-content: space-around;
     background: #fff8f0;
     border: 2px dashed #e6a86c;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
-/* ACÁ ESTÁ LA MAGIA VISUAL: Animación al pasar por encima */
 .price-item {
     display: flex;
     flex-direction: column;
@@ -99,14 +105,14 @@ header {
 
 .shipping {
     font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     color: #444;
 }
 
 .schedule {
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     padding-top: 1rem;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #e0d0c0;
 }
 
 .schedule h3 {
@@ -117,14 +123,45 @@ header {
 .badge {
     display: inline-block;
     margin-top: 10px;
-    padding: 5px 15px;
+    padding: 6px 16px;
     border-radius: 20px;
     font-weight: bold;
     font-size: 0.9rem;
     color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 .badge.open { background-color: #28a745; }
 .badge.closed { background-color: #dc3545; }
+
+/* Retoque: Tarjeta de Info Útil mejorada con bordes más finos y sombra suave */
+.faq-section {
+    background: #fffaf5;
+    border: 1px solid #f3d6bc;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.faq-section h3 {
+    font-size: 0.95rem;
+    color: #8b4513;
+    margin-bottom: 0.6rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.faq-item {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
 
 .whatsapp-btn {
     display: inline-block;
@@ -137,37 +174,13 @@ header {
     font-weight: bold;
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
     width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .whatsapp-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
-
-/* Estilos para la sección de Preguntas Frecuentes / Info Útil */
-.faq-section {
-    background: #fff3e6;
-    border: 1px solid #f0d5bc;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-.faq-section h3 {
-    font-size: 1rem;
-    color: #8b4513;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.faq-item {
-    font-size: 0.85rem;
-    color: #444;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
 .faq-item:last-child {
     margin-bottom: 0;
 }
