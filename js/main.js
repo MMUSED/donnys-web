@@ -2,13 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const badge = document.getElementById("status-badge");
     const wpBtn = document.getElementById("whatsapp-btn");
     
-    // IMPORTANTE: Poné acá el número donde vas a recibir los pedidos
-    // Formato: código de país (54 para Arg) + código de área sin el 0 + número sin el 15
-    const numWhatsApp = "5491100000000"; 
+    // ⚠️ REEMPLAZÁ ESTE NÚMERO con tu WhatsApp real
+    // Formato: 54 (Argentina) + 9 (Celular) + Código de área sin el 0 + Número sin el 15
+    // Ejemplo para La Plata (código 221): 5492211234567
+    const numWhatsApp = "5492210000000"; 
     
+    // Obtenemos la hora actual del dispositivo del cliente
     const now = new Date();
     const hour = now.getHours();
 
+    // Tus horarios:
+    // Turno Mañana: 10:00 a 12:00
+    // Turno Tarde: 14:00 a 16:00
     const isMorningOpen = hour >= 10 && hour < 12;
     const isAfternoonOpen = hour >= 14 && hour < 16;
     
@@ -16,28 +21,30 @@ document.addEventListener("DOMContentLoaded", () => {
     let textoBoton = "";
 
     if (isMorningOpen || isAfternoonOpen) {
-        // --- LOCAL ABIERTO ---
+        // --- LOCAL ABIERTO (Toma de pedidos en curso) ---
         badge.textContent = "¡Estamos tomando pedidos!";
         badge.classList.remove("closed");
         badge.classList.add("open");
         
-        mensaje = "Hola Donny's! Quiero hacer un pedido de donas ahora mismo.";
+        // Mensaje automático optimizado para la venta
+        mensaje = "¡Hola Donny's! 🍩 Quiero hacer un pedido de donas artesanales para recibir hoy en casa. ¿Me pasan los detalles?";
         textoBoton = "Pedir ahora por WhatsApp";
-        wpBtn.style.backgroundColor = "#25d366"; // Verde clásico de WhatsApp
+        wpBtn.style.backgroundColor = "#25d366"; // Verde WhatsApp clásico
     } else {
-        // --- LOCAL CERRADO ---
+        // --- LOCAL CERRADO (Dejar pedido encargado) ---
         badge.textContent = "Cocina cerrada por ahora";
         badge.classList.remove("open");
         badge.classList.add("closed");
         
-        mensaje = "Hola Donny's! Vi que la cocina está cerrada, pero quiero dejarles mi pedido encargado para cuando abran.";
-        textoBoton = "Dejar pedido encargado 🌙";
-        wpBtn.style.backgroundColor = "#128C7E"; // Un verde oscuro para indicar que es diferido
+        // Mensaje automático para pedidos fuera de horario
+        mensaje = "¡Hola Donny's! 🌙 Vi que la cocina está cerrada ahora, pero quiero dejar mi pedido encargado para el próximo turno. ¿Me confirman?";
+        textoBoton = "Dejar pedido encargado 🕒";
+        wpBtn.style.backgroundColor = "#128C7E"; // Verde un poco más oscuro para diferenciar
     }
     
-    // Inyectamos los datos en el botón de WhatsApp
+    // Actualizamos el texto visual del botón
     wpBtn.textContent = textoBoton;
     
-    // encodeURIComponent asegura que los espacios en el mensaje se lean bien en el link
+    // Convertimos el mensaje para que funcione perfectamente en el link de WhatsApp
     wpBtn.href = `https://wa.me/${numWhatsApp}?text=${encodeURIComponent(mensaje)}`;
 });
