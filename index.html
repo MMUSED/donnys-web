@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYB | Donny's - Donas Artesanales</title>
-    <!-- Enlazamos nuestro CSS -->
+    
+    <!-- Favicon de Dona (Se ve en la pestaña del navegador) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍩</text></svg>">
+    
+    <!-- Meta Tags para WhatsApp, Instagram, etc. -->
+    <meta property="og:title" content="Donny's | Donas Artesanales">
+    <meta property="og:description" content="Crujientes, calentitas y directo a tu casa. Pedí tu docena ahora.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1920&auto=format&fit=crop">
+    <meta property="og:type" content="website">
+
+    <!-- Fuentes y CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Fuente atractiva para el título -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Header con el logo/nombre -->
     <header>
         <div class="logo">
             <span class="initials">GYB</span>
@@ -19,7 +27,6 @@
         </div>
     </header>
 
-    <!-- Contenedor principal con fondo opaco -->
     <main class="hero-section">
         <div class="glass-card">
             <h2>Donas artesanales, las llevamos hasta tu casa</h2>
@@ -46,18 +53,16 @@
                 <h3>Horarios de Pedidos:</h3>
                 <p>🌅 Mañana: 10:00 hs a 12:00 hs</p>
                 <p>🌇 Tarde: 14:00 hs a 16:00 hs</p>
-                <!-- Aquí JS inyectará el estado (Abierto/Cerrado) -->
                 <div id="status-badge" class="badge">Calculando estado...</div>
             </div>
 
-            <!-- Reemplazá el 5491100000000 con tu número real -->
-            <a href="https://wa.me/5491100000000?text=Hola%20Donny's!%20Quiero%20pedir%20unas%20donas%20artesanales." target="_blank" class="whatsapp-btn">
-                Pedir ahora por WhatsApp
+            <!-- El enlace vacío. Javascript lo va a llenar con el número y texto correcto -->
+            <a href="#" target="_blank" id="whatsapp-btn" class="whatsapp-btn">
+                Cargando botón...
             </a>
         </div>
     </main>
 
-    <!-- Enlazamos nuestro JS -->
     <script src="js/main.js"></script>
 </body>
 </html>
