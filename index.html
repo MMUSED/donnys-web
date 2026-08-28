@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYB | Donny's - Donas Artesanales</title>
+    <!-- Enlazamos nuestro CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Fuente atractiva para el título -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header con el logo/nombre -->
+    <header>
+        <div class="logo">
+            <span class="initials">GYB</span>
+            <h1>Donny's</h1>
+        </div>
+    </header>
+
+    <!-- Contenedor principal con fondo opaco -->
+    <main class="hero-section">
+        <div class="glass-card">
+            <h2>Donas artesanales, las llevamos hasta tu casa</h2>
+            
+            <p class="description">
+                Crujientes por fuera, con una masa tan tierna que se deshace en tu boca. 
+                Directo de nuestra cocina a tus manos, <strong>aún calentitas</strong> y listas para tu mate o café.
+            </p>
+
+            <div class="pricing">
+                <div class="price-item">
+                    <span>Docena</span>
+                    <strong>$13.000</strong>
+                </div>
+                <div class="price-item">
+                    <span>Media Docena</span>
+                    <strong>$7.500</strong>
+                </div>
+            </div>
+
+            <p class="shipping">🚚 Envío a La Plata, Ensenada y Berisso: <strong>$1.500</strong></p>
+
+            <div class="schedule">
+                <h3>Horarios de Pedidos:</h3>
+                <p>🌅 Mañana: 10:00 hs a 12:00 hs</p>
+                <p>🌇 Tarde: 14:00 hs a 16:00 hs</p>
+                <!-- Aquí JS inyectará el estado (Abierto/Cerrado) -->
+                <div id="status-badge" class="badge">Calculando estado...</div>
+            </div>
+
+            <!-- Reemplazá el 5491100000000 con tu número real -->
+            <a href="https://wa.me/5491100000000?text=Hola%20Donny's!%20Quiero%20pedir%20unas%20donas%20artesanales." target="_blank" class="whatsapp-btn">
+                Pedir ahora por WhatsApp
+            </a>
+        </div>
+    </main>
+
+    <!-- Enlazamos nuestro JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* Reset básico para que se vea igual en todos los navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    /* Fondo sugerido: una imagen oscura de donas. Usamos un color de resguardo */
+    background: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat fixed;
+    background-color: #2c1e16; 
+}
+
+/* Header */
+header {
+    background-color: rgba(20, 10, 5, 0.9);
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.logo .initials {
+    color: #e6a86c;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.logo h1 {
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-top: -5px;
+}
+
+/* Hero Section y Tarjeta Central */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    /* Capa oscura extra sobre el fondo para que la tarjeta resalte */
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.glass-card h2 {
+    color: #8b4513; /* Marrón chocolate */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 1.05rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* Precios */
+.pricing {
+    display: flex;
+    justify-content: space-around;
+    background: #fff8f0;
+    border: 2px dashed #e6a86c;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.price-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-item span {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.price-item strong {
+    font-size: 1.5rem;
+    color: #d2691e;
+}
+
+.shipping {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #444;
+}
+
+/* Horarios */
+.schedule {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+}
+
+.schedule h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: white;
+}
+.badge.open { background-color: #28a745; }
+.badge.closed { background-color: #dc3545; }
+
+/* Botón CTA (Call To Action) */
+.whatsapp-btn {
+    display: inline-block;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+}
