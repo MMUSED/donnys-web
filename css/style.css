@@ -143,3 +143,31 @@ header {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+/* Estilos para la sección de Preguntas Frecuentes / Info Útil */
+.faq-section {
+    background: #fff3e6;
+    border: 1px solid #f0d5bc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.faq-section h3 {
+    font-size: 1rem;
+    color: #8b4513;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.faq-item {
+    font-size: 0.85rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
