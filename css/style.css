@@ -135,6 +135,29 @@ header {
     border-color: #c5a059;
 }
 
+/* Caja de Total Estimado */
+.total-summary-box {
+    background: #f4f9f4;
+    border: 1px solid #c6ebd9;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #2f855a;
+    font-weight: 500;
+}
+
+.total-row strong {
+    font-size: 1.25rem;
+    color: #22543d;
+}
+
 .schedule {
     margin-bottom: 1rem;
     padding-top: 0.8rem;
@@ -241,6 +264,10 @@ header {
 }
 
 @keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
     0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
     70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
