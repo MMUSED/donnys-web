@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <!-- Selector de Cantidad con data-price -->
+            <!-- Selector de Cantidad -->
             <div class="selector-container">
                 <label for="product-select">¿Qué vas a llevar hoy?</label>
                 <select id="product-select">
@@ -69,7 +69,7 @@
                 </select>
             </div>
 
-            <!-- Selector de Zonas de Envío Dinámico con data-price -->
+            <!-- Selector de Zonas de Envío Dinámico -->
             <div class="selector-container">
                 <label for="zone-select">📍 Seleccioná tu zona de envío:</label>
                 <select id="zone-select">
@@ -79,7 +79,17 @@
                 </select>
             </div>
 
-            <!-- Caja de Total Estimado en Pantalla -->
+            <!-- Order Bump: Extras para Acompañar (Nuevo) -->
+            <div class="selector-container">
+                <label for="extra-select">☕ ¿Le sumamos un extra?</label>
+                <select id="extra-select">
+                    <option value="Sin extra" data-price="0">Ninguno</option>
+                    <option value="Café en grano x250g" data-price="5500">+ Café en grano x250g (+$5.500)</option>
+                    <option value="Lata de Coca-Cola 354ml" data-price="1800">+ Lata de Coca-Cola 354ml (+$1.800)</option>
+                </select>
+            </div>
+
+            <!-- Resumen de Total Dinámico en Pantalla -->
             <div class="total-summary-box">
                 <div class="total-row">
                     <span>Total estimado a pagar:</span>
@@ -105,7 +115,7 @@
                 <span id="copy-feedback" class="copy-feedback">¡Alias copiado al portapapeles! ✨</span>
             </div>
 
-            <!-- Botón de WhatsApp Principal -->
+            <!-- Botón de WhatsApp Principal (con rastreo de conversiones) -->
             <a href="#" target="_blank" rel="noopener noreferrer" id="whatsapp-btn" class="whatsapp-btn" aria-label="Hacer pedido de donas por WhatsApp">
                 Cargando botón...
             </a>
