@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusBadge = document.getElementById('status-badge');
     const productSelect = document.getElementById('product-select');
     const zoneSelect = document.getElementById('zone-select');
+    const extraSelect = document.getElementById('extra-select');
     const totalPriceDisplay = document.getElementById('total-price-display');
     
     const copyAliasBtn = document.getElementById('copy-alias-btn');
@@ -34,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Cálculo de Totales y Actualización Dinámica del Enlace de WhatsApp
+    // 2. Cálculo de Totales, Extras y Actualización del Enlace de WhatsApp
     function updateOrderDetails() {
-        // Obtener elementos seleccionados
         const selectedProductOption = productSelect.options[productSelect.selectedIndex];
         const selectedZoneOption = zoneSelect.options[zoneSelect.selectedIndex];
+        const selectedExtraOption = extraSelect.options[extraSelect.selectedIndex];
 
         const productName = selectedProductOption.value;
         const productPrice = parseInt(selectedProductOption.getAttribute('data-price')) || 0;
@@ -46,22 +47,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const zoneName = selectedZoneOption.value;
         const zonePrice = parseInt(selectedZoneOption.getAttribute('data-price')) || 0;
 
-        // Calcular total
-        const total = productPrice + zonePrice;
+        const extraName = selectedExtraOption.value;
+        const extraPrice = parseInt(selectedExtraOption.getAttribute('data-price')) || 0;
 
-        // Formatear precio en pesos argentinos (ej: $14.500)
+        // Calcular total general
+        const total = productPrice + zonePrice + extraPrice;
         const formattedTotal = "$" + total.toLocaleString('es-AR');
         totalPriceDisplay.textContent = formattedTotal;
 
-        // Construir mensaje exacto para WhatsApp
-        const message = `¡Hola! Quisiera encargar: *${productName}* con envío a *${zoneName}*. El total a pagar es *${formattedTotal}*. 🍩 ¿Confirmamos?`;
+        // Armar descripción del extra para el mensaje
+        let extraText = "";
+        if (extraPrice > 0) {
+            extraText = ` con extra de *${extraName}*`;
+        }
+
+        // Construir mensaje detallado para WhatsApp
+        const message = `¡Hola! Quisiera encargar: *${productName}*${extraText} con envío a *${zoneName}*. El total a pagar es *${formattedTotal}*. 🍩 ¿Confirmamos?`;
         const encodedMessage = encodeURIComponent(message);
         
         whatsappBtn.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
         whatsappBtn.textContent = `Pedir por WhatsApp (${formattedTotal}) 🍩`;
     }
 
-    // 3. Funcionalidad de Copiar Alias con un Toque
+    // 3. Rastreo de Conversión Analítica (Google Analytics / Meta Pixel) al hacer clic
+    whatsappBtn.addEventListener('click', () => {
+        // Disparar evento de Google Analytics (GA4) si está instalado
+        if (typeof gtag === 'function') {
+            gtag('event', 'generate_lead', {
+                'event_category': 'Checkout',
+                'event_label': 'Pedido de WhatsApp',
+                'value': totalPriceDisplay.textContent
+            });
+        }
+
+        // Disparar evento de Meta Pixel (si decides agregarlo después) si está instalado
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead', { content_name: 'Pedido WhatsApp Donas' });
+        }
+    });
+
+    // 4. Funcionalidad de Copiar Alias con un Toque
     copyAliasBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(myAlias).then(() => {
             copyFeedback.style.display = 'block';
@@ -76,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Eventos de cambio en selectores
     productSelect.addEventListener('change', updateOrderDetails);
     zoneSelect.addEventListener('change', updateOrderDetails);
+    extraSelect.addEventListener('change', updateOrderDetails);
 
     // Inicialización al cargar la página
     checkBusinessStatus();
