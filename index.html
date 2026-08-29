@@ -47,7 +47,7 @@
                 Directo de nuestra cocina a tus manos, <strong>aún calentitas</strong> y listas para tu mate o café.
             </p>
 
-            <!-- Precios interactivos -->
+            <!-- Precios base -->
             <div class="pricing">
                 <div class="price-item">
                     <span>📦 Docena</span>
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <!-- Selector dinámico para elegir cantidad antes de pedir -->
+            <!-- Selector de Cantidad -->
             <div class="selector-container">
                 <label for="product-select">¿Qué vas a llevar hoy?</label>
                 <select id="product-select">
@@ -69,7 +69,15 @@
                 </select>
             </div>
 
-            <p class="shipping">🛵 Envío a La Plata, Ensenada y Berisso: <strong>$1.500</strong></p>
+            <!-- Selector de Zonas de Envío Dinámico -->
+            <div class="selector-container">
+                <label for="zone-select">📍 Seleccioná tu zona de envío:</label>
+                <select id="zone-select">
+                    <option value="La Plata Centro ($1500)" data-price="1500">La Plata Centro - $1.500</option>
+                    <option value="Tolosa / Gonnet ($2000)" data-price="2000">Tolosa / Gonnet - $2.000</option>
+                    <option value="Berisso / Ensenada ($2500)" data-price="2500">Berisso / Ensenada - $2.500</option>
+                </select>
+            </div>
 
             <div class="schedule">
                 <h3>Horarios de Pedidos</h3>
@@ -78,22 +86,22 @@
                 <div id="status-badge" class="badge">Calculando estado...</div>
             </div>
 
-            <!-- Info Útil -->
+            <!-- Info de Pagos y Copia Rápida de Alias -->
             <div class="faq-section">
-                <h3>Info Útil</h3>
+                <h3>Info Útil y Pagos</h3>
                 <div class="faq-item">
-                    <strong>💳 Medios de pago:</strong> Transferencia, Mercado Pago y Efectivo.
+                    <strong>📦 Empaque:</strong> Caja hermética para conservar todo su calor.
                 </div>
-                <div class="faq-item">
-                    <strong>🛡️ Empaque:</strong> Caja hermética especial para conservar todo su calor.
-                </div>
+                <!-- Botón de Copia Rápida de CBU/Alias -->
+                <button type="button" id="copy-alias-btn" class="copy-btn">📋 Copiar Alias de Mercado Pago</button>
+                <span id="copy-feedback" class="copy-feedback">¡Alias copiado al portapapeles! ✨</span>
             </div>
 
             <div class="upcoming-section">
                 <span>✨ Próximamente: ¡Nuevas donas rellenas de dulce de leche y chocolate!</span>
             </div>
 
-            <!-- Botón de WhatsApp accesible -->
+            <!-- Botón de WhatsApp Principal -->
             <a href="#" target="_blank" rel="noopener noreferrer" id="whatsapp-btn" class="whatsapp-btn" aria-label="Hacer pedido de donas por WhatsApp">
                 Cargando botón...
             </a>
