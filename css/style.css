@@ -10,6 +10,7 @@ body {
     background-color: #121212;
     background-image: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 header {
@@ -42,15 +43,31 @@ header {
     padding: 2rem 1rem;
 }
 
+/* TARJETA CON ANIMACIÓN DE ENTRADA SUAVE (Fade In & Slide Up) */
 .glass-card {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
     padding: 2.5rem;
-    border-radius: 16px;
+    border-radius: 20px;
     max-width: 480px;
     width: 100%;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    
+    /* Animación de carga */
+    animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .glass-card h2 {
@@ -63,7 +80,7 @@ header {
 
 .description {
     font-size: 0.98rem;
-    color: #666;
+    color: #555;
     margin-bottom: 1.5rem;
     line-height: 1.5;
     font-weight: 300;
@@ -72,9 +89,9 @@ header {
 .pricing {
     display: flex;
     justify-content: space-around;
-    background: #f9f9f9;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
+    background: #fdfbf7;
+    border: 1px solid #f0e6d8;
+    border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1.2rem;
 }
@@ -105,14 +122,14 @@ header {
 .shipping {
     font-size: 0.9rem;
     margin-bottom: 1.2rem;
-    color: #555;
+    color: #444;
     font-weight: 300;
 }
 
 .schedule {
     margin-bottom: 1.2rem;
     padding-top: 1rem;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid #eee;
 }
 
 .schedule h3 {
@@ -141,17 +158,22 @@ header {
 .badge.closed { background-color: #c53030; }
 
 .faq-section {
-    background: #fdfbf7;
-    border: 1px solid #f0e6d8;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 10px;
     padding: 0.9rem;
     margin-bottom: 1rem;
     text-align: left;
+    transition: background 0.3s;
+}
+
+.faq-section:hover {
+    background: #edf2f7;
 }
 
 .faq-section h3 {
     font-size: 0.9rem;
-    color: #8c6d46;
+    color: #4a5568;
     margin-bottom: 0.5rem;
     text-align: center;
     font-weight: 600;
@@ -159,7 +181,7 @@ header {
 
 .faq-item {
     font-size: 0.82rem;
-    color: #555;
+    color: #4a5568;
     margin-bottom: 0.3rem;
     line-height: 1.4;
     font-weight: 300;
@@ -169,20 +191,18 @@ header {
     margin-bottom: 0;
 }
 
-/* ESTILO NUEVO: Tarjeta de próximos sabores (Expectativa) */
 .upcoming-section {
-    background: #faf5ff;
-    border: 1px dashed #d6bcfa;
+    background: #fff5f5;
+    border: 1px dashed #feb2b2;
     border-radius: 8px;
     padding: 0.6rem 0.8rem;
     margin-bottom: 1.2rem;
     font-size: 0.8rem;
-    color: #6b46c1;
+    color: #c53030;
     font-weight: 500;
     text-align: center;
 }
 
-/* BOTÓN DE WHATSAPP CON EFECTO DE PULSO VISIBLE */
 .whatsapp-btn {
     display: inline-block;
     background-color: #25d366;
@@ -201,10 +221,9 @@ header {
 .whatsapp-btn:hover {
     background-color: #20ba5a;
     transform: translateY(-2px);
-    animation: none; /* Pausa el pulso al apoyar el mouse para darle fluidez al hover */
+    animation: none;
 }
 
-/* Animación de pulso continuo para llamar la atención hacia el botón */
 @keyframes pulse-whatsapp {
     0% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
@@ -215,4 +234,5 @@ header {
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
+}
 }
