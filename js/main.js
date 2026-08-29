@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusBadge = document.getElementById('status-badge');
     const productSelect = document.getElementById('product-select');
     const zoneSelect = document.getElementById('zone-select');
+    const totalPriceDisplay = document.getElementById('total-price-display');
     
     const copyAliasBtn = document.getElementById('copy-alias-btn');
     const copyFeedback = document.getElementById('copy-feedback');
@@ -33,15 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Actualización Dinámica del Enlace de WhatsApp con Producto y Zona
-    function updateWhatsAppLink() {
-        const selectedProduct = productSelect.value;
-        const selectedZone = zoneSelect.value;
-        
-        const message = `¡Hola! Quisiera encargar: *${selectedProduct}* con envío a *${selectedZone}*. 🍩 ¿Confirmamos?`;
+    // 2. Cálculo de Totales y Actualización Dinámica del Enlace de WhatsApp
+    function updateOrderDetails() {
+        // Obtener elementos seleccionados
+        const selectedProductOption = productSelect.options[productSelect.selectedIndex];
+        const selectedZoneOption = zoneSelect.options[zoneSelect.selectedIndex];
+
+        const productName = selectedProductOption.value;
+        const productPrice = parseInt(selectedProductOption.getAttribute('data-price')) || 0;
+
+        const zoneName = selectedZoneOption.value;
+        const zonePrice = parseInt(selectedZoneOption.getAttribute('data-price')) || 0;
+
+        // Calcular total
+        const total = productPrice + zonePrice;
+
+        // Formatear precio en pesos argentinos (ej: $14.500)
+        const formattedTotal = "$" + total.toLocaleString('es-AR');
+        totalPriceDisplay.textContent = formattedTotal;
+
+        // Construir mensaje exacto para WhatsApp
+        const message = `¡Hola! Quisiera encargar: *${productName}* con envío a *${zoneName}*. El total a pagar es *${formattedTotal}*. 🍩 ¿Confirmamos?`;
         const encodedMessage = encodeURIComponent(message);
+        
         whatsappBtn.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        whatsappBtn.textContent = `Pedir por WhatsApp 🍩`;
+        whatsappBtn.textContent = `Pedir por WhatsApp (${formattedTotal}) 🍩`;
     }
 
     // 3. Funcionalidad de Copiar Alias con un Toque
@@ -57,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Eventos de cambio en selectores
-    productSelect.addEventListener('change', updateWhatsAppLink);
-    zoneSelect.addEventListener('change', updateWhatsAppLink);
+    productSelect.addEventListener('change', updateOrderDetails);
+    zoneSelect.addEventListener('change', updateOrderDetails);
 
     // Inicialización al cargar la página
     checkBusinessStatus();
-    updateWhatsAppLink();
+    updateOrderDetails();
 });
