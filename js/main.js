@@ -1,50 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const badge = document.getElementById("status-badge");
-    const wpBtn = document.getElementById("whatsapp-btn");
+document.addEventListener('DOMContentLoaded', () => {
+    // Definimos tu número de WhatsApp y los textos predeterminados
+    const phoneNumber = "5492210000000"; // Reemplaza con tu número real con código de país y área sin '+'
+    const defaultMessage = "¡Hola! Quisiera hacer un pedido de donas artesanales de Donny's. 🍩";
     
-    // ⚠️ REEMPLAZÁ ESTE NÚMERO con tu WhatsApp real
-    // Formato: 54 (Argentina) + 9 (Celular) + Código de área sin el 0 + Número sin el 15
-    // Ejemplo para La Plata (código 221): 5492211234567
-    const numWhatsApp = "5492210000000"; 
-    
-    // Obtenemos la hora actual del dispositivo del cliente
-    const now = new Date();
-    const hour = now.getHours();
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    const statusBadge = document.getElementById('status-badge');
 
-    // Tus horarios:
-    // Turno Mañana: 10:00 a 12:00
-    // Turno Tarde: 14:00 a 16:00
-    const isMorningOpen = hour >= 10 && hour < 12;
-    const isAfternoonOpen = hour >= 14 && hour < 16;
-    
-    let mensaje = "";
-    let textoBoton = "";
+    // Función para calcular el estado del negocio según los horarios de atención
+    function checkBusinessStatus() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const currentTime = hours * 60 + minutes; // Convertimos todo a minutos del día
 
-    if (isMorningOpen || isAfternoonOpen) {
-        // --- LOCAL ABIERTO (Toma de pedidos en curso) ---
-        badge.textContent = "¡Estamos tomando pedidos!";
-        badge.classList.remove("closed");
-        badge.classList.add("open");
-        
-        // Mensaje automático optimizado para la venta
-        mensaje = "¡Hola Donny's! 🍩 Quiero hacer un pedido de donas artesanales para recibir hoy en casa. ¿Me pasan los detalles?";
-        textoBoton = "Pedir ahora por WhatsApp";
-        wpBtn.style.backgroundColor = "#25d366"; // Verde WhatsApp clásico
-    } else {
-        // --- LOCAL CERRADO (Dejar pedido encargado) ---
-        badge.textContent = "Cocina cerrada por ahora";
-        badge.classList.remove("open");
-        badge.classList.add("closed");
-        
-        // Mensaje automático para pedidos fuera de horario
-        mensaje = "¡Hola Donny's! 🌙 Vi que la cocina está cerrada ahora, pero quiero dejar mi pedido encargado para el próximo turno. ¿Me confirman?";
-        textoBoton = "Dejar pedido encargado 🕒";
-        wpBtn.style.backgroundColor = "#128C7E"; // Verde un poco más oscuro para diferenciar
+        // Horarios de cocina:
+        // Mañana: 10:00 (600 min) a 12:00 (720 min)
+        // Tarde: 14:00 (840 min) a 16:00 (960 min)
+        const morningOpen = 600;  // 10:00 hs
+        const morningClose = 720; // 12:00 hs
+        const afternoonOpen = 840;  // 14:00 hs
+        const afternoonClose = 960; // 16:00 hs
+
+        const isMorning = currentTime >= morningOpen && currentTime <= morningClose;
+        const isAfternoon = currentTime >= afternoonOpen && currentTime <= afternoonClose;
+
+        if (isMorning || isAfternoon) {
+            // ABIERTO
+            statusBadge.textContent = "🟢 Abierto - ¡Hacé tu pedido!";
+            statusBadge.className = "badge open";
+            whatsappBtn.style.pointerEvents = "auto";
+            whatsappBtn.style.opacity = "1";
+            whatsappBtn.textContent = "Pedir por WhatsApp 🍩";
+        } else {
+            // CERRADO (Corte automático de stock / horario fuera de rango)
+            statusBadge.textContent = "🔴 Cerrado - Fuera de horario de pedidos";
+            statusBadge.className = "badge closed";
+            whatsappBtn.textContent = "Consultar para mañana 🕒";
+        }
     }
-    
-    // Actualizamos el texto visual del botón
-    wpBtn.textContent = textoBoton;
-    
-    // Convertimos el mensaje para que funcione perfectamente en el link de WhatsApp
-    wpBtn.href = `https://wa.me/${numWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+    // Ejecutamos la validación al cargar la página
+    checkBusinessStatus();
+
+    // Codificamos el mensaje de forma segura para la URL de WhatsApp
+    const encodedMessage = encodeURIComponent(defaultMessage);
+    whatsappBtn.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 });
