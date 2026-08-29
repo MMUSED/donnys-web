@@ -13,7 +13,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Soporte automático para sistemas claros si el usuario lo prefiere */
+/* Soporte automático para sistemas claros */
 @media (prefers-color-scheme: light) {
     body {
         background-color: #f4f4f4;
@@ -105,7 +105,6 @@ header {
     font-weight: 600;
 }
 
-/* Estilos para los nuevos Selectores de Producto y Zonas */
 .selector-container {
     margin-bottom: 1rem;
     text-align: left;
@@ -191,7 +190,6 @@ header {
     font-weight: 300;
 }
 
-/* Botón de Copia Rápida de Alias */
 .copy-btn {
     display: block;
     width: 100%;
@@ -219,18 +217,6 @@ header {
     text-align: center;
     margin-top: 4px;
     font-weight: 600;
-}
-
-.upcoming-section {
-    background: #fff5f5;
-    border: 1px dashed #feb2b2;
-    border-radius: 8px;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 0.78rem;
-    color: #c53030;
-    font-weight: 500;
-    text-align: center;
 }
 
 .whatsapp-btn {
