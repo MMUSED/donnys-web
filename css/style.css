@@ -7,7 +7,6 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: #222;
-    /* Fondo neutro y oscuro mate, muy limpio */
     background-color: #121212;
     background-image: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
     background-attachment: fixed;
@@ -21,7 +20,7 @@ header {
 }
 
 .logo .initials {
-    color: #c5a059; /* Tono dorado suave y sobrio */
+    color: #c5a059;
     font-size: 0.85rem;
     letter-spacing: 3px;
     font-weight: 600;
@@ -43,7 +42,6 @@ header {
     padding: 2rem 1rem;
 }
 
-/* TARJETA MINIMALISTA: Fondo puro, bordes finos y sombra elegante */
 .glass-card {
     background: #ffffff;
     padding: 2.5rem;
@@ -139,16 +137,15 @@ header {
     font-size: 0.85rem;
     color: white;
 }
-.badge.open { background-color: #2f855a; } /* Verde sobrio */
-.badge.closed { background-color: #c53030; } /* Rojo sobrio */
+.badge.open { background-color: #2f855a; }
+.badge.closed { background-color: #c53030; }
 
-/* Bloque de Info Útil Minimalista */
 .faq-section {
     background: #fdfbf7;
     border: 1px solid #f0e6d8;
     border-radius: 10px;
     padding: 0.9rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: left;
 }
 
@@ -172,6 +169,20 @@ header {
     margin-bottom: 0;
 }
 
+/* ESTILO NUEVO: Tarjeta de próximos sabores (Expectativa) */
+.upcoming-section {
+    background: #faf5ff;
+    border: 1px dashed #d6bcfa;
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.8rem;
+    color: #6b46c1;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* BOTÓN DE WHATSAPP CON EFECTO DE PULSO VISIBLE */
 .whatsapp-btn {
     display: inline-block;
     background-color: #25d366;
@@ -181,12 +192,27 @@ header {
     border-radius: 30px;
     font-size: 1.05rem;
     font-weight: 600;
-    transition: background-color 0.2s, transform 0.2s;
     width: 100%;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    animation: pulse-whatsapp 2s infinite;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .whatsapp-btn:hover {
     background-color: #20ba5a;
     transform: translateY(-2px);
+    animation: none; /* Pausa el pulso al apoyar el mouse para darle fluidez al hover */
+}
+
+/* Animación de pulso continuo para llamar la atención hacia el botón */
+@keyframes pulse-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
 }
