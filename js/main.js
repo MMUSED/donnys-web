@@ -44,7 +44,3 @@ document.addEventListener('DOMContentLoaded', () => {
     checkBusinessStatus();
     updateWhatsAppLink();
 });
-    // Codificamos el mensaje de forma segura para la URL de WhatsApp
-    const encodedMessage = encodeURIComponent(defaultMessage);
-    whatsappBtn.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-});
